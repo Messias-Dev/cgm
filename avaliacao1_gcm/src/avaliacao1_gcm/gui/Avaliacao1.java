@@ -2,6 +2,8 @@ package avaliacao1_gcm.gui;
 
 import java.util.Scanner;
 
+import avaliacao1_gcm.business.CpfBO;
+
 public class Avaliacao1 {
 
 	private static Scanner sc = new Scanner(System.in);
@@ -12,7 +14,12 @@ public class Avaliacao1 {
 		String cpf = sc.next();
 		sc.close();
 
-		// TODO validar CPF e imprimir msg
+		if (CpfBO.isValid(cpf)) {
+			System.out.println("CPF válido");
+		}
+		else {
+			System.out.println("CPF inválido");
+		}
 		
 
 	}
