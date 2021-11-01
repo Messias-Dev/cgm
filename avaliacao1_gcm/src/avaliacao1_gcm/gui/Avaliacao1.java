@@ -14,11 +14,15 @@ public class Avaliacao1 {
 		String cpf = sc.next();
 		sc.close();
 
-		if (CpfBO.isValid(cpf)) {
-			System.out.println("CPF válido");
-		}
-		else {
-			System.out.println("CPF inválido");
+		try {
+			if (CpfBO.isValid(cpf)) {
+				System.out.println("CPF válido");
+			}
+			else {
+				System.out.println("CPF inválido");
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
 		}
 		
 

@@ -3,8 +3,12 @@ package avaliacao1_gcm.business;
 import java.util.InputMismatchException;
 
 public class CpfBO {
-
-	public static boolean isValid(String cpf) {
+	
+	private static String cpf;
+	
+	public static boolean isValid(String cpfParam) throws Exception {
+		cpf = cpfParam;
+		verify();
         // considera-se erro CPF's formados por uma sequencia de numeros iguais
         if (cpf.equals("00000000000") ||
             cpf.equals("11111111111") ||
@@ -59,4 +63,19 @@ public class CpfBO {
                 return(false);
             }
         }
+
+	private static void verify() throws Exception {
+		
+		// Verifica se é vazio
+		if (cpf.isBlank() || !cpf.matches("(?=.*[0-9]).{8,}")) {
+			throw new Exception("Digite apenas números");
+		}
+		
+		// Add 0 na frente quando tem 10 digitos
+		if (cpf.length() == 10) {
+			String aux = " 0";
+			cpf = aux + cpf;
+		}
+		
+	}
 }
